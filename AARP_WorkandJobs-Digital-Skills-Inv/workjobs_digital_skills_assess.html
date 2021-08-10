@@ -1,0 +1,505 @@
+%%[
+
+VAR @ContractID, @email, @email_id, @language, @EmailSubCat, @encryptedDataString, @encData
+
+SET @ContractID = "00007"
+SET @EmailSubCat = "00007"
+SET @email_id = @EmailSubCat
+SET @email = emailaddr
+SET @language = "english"	
+SET @encryptedDataString = @email
+SET @encData = EncryptSymmetric(@encryptedDataString, "AES", @null, "Ex4ctT4rget", @null, "0000000000000000", @null, "00000000000000000000000000000000")	
+
+        
+SET @show_narrow_optOut = "Y"
+SET @show_global_optOut = "Y" 
+SET @show_manage_account = "Y" 
+SET @show_aarp = "Y"
+SET @show_contactUs = "Y" 
+SET @show_provider_disclaimer = "N"
+SET @show_copyright = "Y"
+SET @show_address = "Y"
+SET @show_privacy_statement = "Y"
+set @show_joinrenewAARP = "N"
+SET @show_aboutAARP = "N" 
+
+if @language == "spanish" then 
+ SET @aarp_URL = Concat("http://www.aarp.org/espanol/?cmp=Footer-AARP.org&encparam=", @encData)
+ SET @contactUs_URL = Concat("http://www.aarp.org/espanol/conozca_aarp/contactenos/?cmp=Footer-ContactUs&encparam=", @encData)
+ SET @contactUS_text = "Cont&aacute;ctanos" 
+ SET @manage_account_text = "Administrar tu cuenta"
+ SET @narrow_optOut_text = "Cancelar suscripci&oacute;n a este tipo de correo electr&oacute;nico"
+ SET @global_optOut_text = "Cancelar suscripci&oacute;n a todos los correos electr&oacute;nicos de AARP"
+ SET @provider_callOut = "Los beneficios para socios de AARP son provistos por terceros, no por AARP ni sus filiales. Los proveedores le pagan una tarifa a AARP en concepto de regal&iacute;as por el uso de su propiedad intelectual. Estos pagos se destinan para uso general de AARP. Algunas ofertas de los proveedores est&aacute;n sujetas a cambios y pueden tener restricciones, por lo que te solicitamos que te comuniques directamente con los proveedores para obtener m&aacute;s detalles."
+ SET @rights_reserved = "Todos los derechos reservados."
+ SET @copyright_URL = Concat("http://www.aarp.org/espanol/conozca_aarp/info-05-2010/aarp_derechos_de_autor_del_sitio_web.html?cmp=Footer-Copyright&encparam=", @encData)
+ SET @Privacy_statement_URL = Concat("http://www.aarp.org/espanol/conozca_aarp/info-05-2010/politica_de_privacidad.html?cmp=Footer-PrivacyPolicy&encparam=", @encData)
+Set @Privacy_statement_text = "Pol&iacute;tica de privacidad"   
+ else
+ SET @aarp_URL = Concat("http://www.aarp.org?cmp=Footer-AARP.org&encparam=", @encData)
+   SET @contactUs_URL = Concat("http://www.aarp.org/about-aarp/contact-us/?cmp=Footer-ContactUs&encparam=", @encData)
+  SET @contactUS_text = "Contact&nbsp;Us" 
+  SET @manage_account_text = "Manage your Account"
+  SET @narrow_optOut_text = "Unsubscribe from this type of email" 
+  SET @global_optOut_text = "Unsubscribe from all AARP Email"
+  SET @provider_callOut = "AARP Member Benefits are provided by third parties, not by AARP or its affiliates. Providers pay royalty fees to AARP for&nbsp;the use of its intellectual property. These fees are used for&nbsp;the general purposes of AARP. Some provider offers are subject to change and may have restrictions. Please contact the provider directly for&nbsp;details."
+  SET @rights_reserved = "All rights reserved."
+  SET @copyright_URL = Concat("http://www.aarp.org/about-aarp/info-05-2010/aarp_web_site_copyright_information.html?cmp=Footer-Copyright&encparam=", @encData)
+  SET @Privacy_statement_URL = Concat("http://www.aarp.org/about-aarp/info-05-2010/privacypolicy.html?cmp=Footer-PrivacyPolicy&encparam=", @encData)
+Set @Privacy_statement_text = "Privacy&nbsp;Policy" 
+ endif
+ 
+  
+SET @show_aarp_text = "AARP.org"
+SET @street_address = "601 E Street NW"
+SET @statefooter = "DC"
+SET @cityfooter = "Washington"
+SET @zip_code = "20049"
+SET @curr_yr = xtyear
+SET @copyright_text = CONCAT("AARP&nbsp;&copy;1995-",@curr_yr)
+
+var @salut_name
+ 
+  if first_name == "" then
+    set @salut_name = "Friend"
+  elseif length(first_name) < 2 and last_name == "" then
+    set @salut_name = "Friend"
+  else
+    set @salut_name = ProperCase(first_name)
+    if length(@salut_name) < 2 and last_name != "" then
+      set @salut_name = concat(@salut_name," ",last_name)
+    endif
+  endif
+]%%
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="HandheldFriendly" content="false" />
+<meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1; minimum-scale=1; user-scalable=no;" />
+<title>AARP</title>
+<style type="text/css">
+	.ReadMsgBody {width:100%;}
+	.ExternalClass {width:100%;}
+	table td {border-collapse:collapse;}
+	.appleLinksWhite a {color:#FFFFFF; text-decoration: none;}
+	.appleLinksBlack a {color:#000000; text-decoration: none;}
+	@media all and (max-width:599px) {
+		/* Standard Responsive CSS : end */
+		table {width:100%;}
+		table[class="wrapper320"] {width:320px !important;}
+		table[class="wrapper100"] {width:100% !important;}
+		div[class="hide"], table[class="hide"], tr[class="hide"], td[class="hide"], img[class="hide"], br[class="hide"], span[class="hide"] {display:none !important;}
+		img[class="fit"] {width:100%; height:auto;}
+		td[class="gutter"] {width:15px !important;}
+		td[class="padding15"] {padding:15px !important;}
+		td[class="padding15H"] {padding:15px 0;}
+		td[class="padding15W"] {padding:0 15px;}
+		tr[class="showMobile"] {
+			float:none !important;
+			display:table-row !important;
+			margin: 0;
+			padding:0;
+			overflow : visible !important;
+			width:auto !important;
+			max-height:inherit !important;
+		}
+		td[class="replaceBG1"][background]{
+			background: none;
+			height: auto;
+			padding: 0;
+		}
+		table[class="cta"] {width:100%; margin: 0 auto;}
+		table[class="cta"] tr td a {padding: 12px 0;}
+		/* Standard Responsive CSS : end */
+
+		td[class="padding-right5"] {padding-right: 10px;font-size: 9px !important; line-height: 10px !important;}
+		td[class="padding-left5"] {padding-left: 10px;font-size: 9px !important; line-height: 10px !important;}
+
+		/* Social Links table */
+		table[class="social"] {width: 180px;}
+
+		table[class="TEXTcta"] tr td {height: 50px; background-color: #EF3829; text-align: center;}
+		table[class="TEXTcta"] tr td a strong {text-decoration: none !important; color: #FFFFFF; text-transform: uppercase;}
+		table[class="TEXTcta"] tr td a {padding: 12px 0; display: block;}
+
+		strong[class="hide"] {display:none !important;}
+
+		table[class="tableAuto"] {width: auto;}
+		table[class="tableAuto"] tr td table {width: auto;}
+		table[class="tableAuto"] tr td
+		table tr td
+		table tr td
+		table tr td
+		table tr td a {white-space:nowrap;}
+
+		ul[class="list"]{margin-left: 30px !important;}
+
+		table[class="50p"]{ width:50% !important;}
+
+		td[class="header"] {padding:0 15px !important;}
+		td[class="header"] a {float: right;}
+		td[class="header"] a span {white-space: nowrap !important;}
+
+	}
+</style>
+</head>
+<body bgcolor="#F9F8F8" text="#000001" link="#0c689c" alink="#c97d30" vlink="#660000" style="padding:0px; margin: 0px;" topmargin="0" rightmargin="0" bottommargin="0" leftmargin="0">
+<div style="text-decoration:none;">
+		<div style="-webkit-text-size-adjust:none;">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#F9F8F8">
+				<tr valign="top">
+					<td width="100%" align="center" valign="top">
+
+						<table width="600" cellpadding="0" cellspacing="0" border="0" class="wrapper100">
+							<tr valign="top">
+								<td align="center" bgcolor="#ffffff">
+									<!-- Greeting text -->
+									<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#FA6422">
+										<tr valign="top">
+											<td height="4" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+										</tr>	
+										<tr>
+											<td valign="top">										
+											<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">									
+												<tr valign="top">
+													<td align="left" valign="middle" style="font:normal 10px/12px Arial, Helvetica, sans-serif; color: #FFFFFF; padding-left:15px;">
+													<a href="https://www.grovo.com/aarp-skills/inventory?CMP=EMC-MIM-DIS-OTH-WORKJOBS-20161130_WorkJobs_DigitalSkills_Inventory_155300_112303-20161130-Preheader-Improve_Digital_Skills-Text" alias="Improve your digital skills" target="_blank" style="outline:none;text-decoration:none;">
+														<span style="color:#FFFFFF;text-decoration:underline;"><strong style="font-weight: normal;">Improve your digital skills.</strong></span></a>
+													</td>
+													<td align="right" valign="middle" style="font:normal 10px/12px Arial, Helvetica, sans-serif; color: #FFFFFF; padding-right:15px;" class="header">			
+														<a href="%%view_email_url%%" alias="View in web browser" target="_blank" style="outline:none;text-decoration:none;">
+														<span style="color:#FFFFFF;text-decoration:underline;"><strong style="font-weight: normal;">View in web browser.</strong></span></a>
+													</td>
+												</tr>
+											</table>																			
+											</td>
+										</tr>
+										<tr valign="top">
+											<td height="4" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+										</tr>
+									</table>
+
+									<!-- Logo -->
+									<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+										<tr valign="top">
+											<td colspan="3" height="25">&nbsp;</td>
+										</tr>
+										<tr valign="top">
+											<td width="20" class="hide">&nbsp;</td>
+											<td width="150" align="left" valign="middle" style="font:normal 12px/20px Arial, Helvetica, sans-serif;" class="padding15W">
+												<a href="http://www.aarp.org/?CMP=EMC-MIM-DIS-OTH-WORKJOBS-20161130_WorkJobs_DigitalSkills_Inventory_155300_112303-20161130-Preheader-AARP_Logo_Top-Logo" alias="AARP logo 1" target="_blank" style="outline:none;text-decoration:none;color:#FF0000;">
+													<img src="https://image.email.aarp.org/lib/fe8f15707362037e7c/m/1/aarp_tek_20160728_logo.gif" width="150" height="24" alt="AARP Real Possibilities" border="0" style="display:block;" />
+												</a>
+											</td>
+											<td width="410" class="hide">&nbsp;</td>
+										</tr>
+										<tr valign="top">
+											<td colspan="3" height="25">&nbsp;</td>
+										</tr>
+									</table>
+
+									<!-- Hero Block -->
+									<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#e0e6e9">
+										<tr valign="top">
+											<td background="https://image.email.aarp.org/lib/fe9615707362037974/m/5/aarp_tek_20161130_1b_bg_01.jpg" bgcolor="#e0e6e9" width="300" height="315" valign="top" align="center" class="replaceBG1">
+											<!--[if gte mso 9]>
+											<v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:300px;height:315px;">
+											<v:fill type="tile" src="https://image.email.aarp.org/lib/fe9615707362037974/m/5/aarp_tek_20161130_1b_bg_01.jpg" color="#e0e6e9" />
+											<v:textbox inset="0,0,0,0">
+											<![endif]-->
+											<div>
+
+												<!--[if !mso]><!-->
+												<!--MOBILE ////////////////////////////////////////////////////////////////// -->
+												<table width="100%" cellpadding="0" cellspacing="0" border="0">
+													<tr valign="top" style="display:none; width:0px; max-height:0px; overflow:hidden; float:left;" class="showMobile">
+														<td align="center">
+															<a href="https://www.grovo.com/aarp-skills/inventory?CMP=EMC-MIM-DIS-OTH-WORKJOBS-20161130_WorkJobs_DigitalSkills_Inventory_155300_112303-20161130-Hero-Reexamine_Digital_Skills-Image" alias="Hero Image" target="_blank" style="text-decoration: none;">
+																<img src="https://image.email.aarp.org/lib/fe9615707362037974/m/5/aarp_tek_20161130_1b_bg01_m.jpg" width="1" height="1" alt="Take the AARP Work &amp; Jobs Digital Skills Inventory" border="0" style="display: block;" class="fit" />
+															</a>
+														</td>
+													</tr>
+													<tr valign="top" style="display:none; width:0px; max-height:0px; overflow:hidden; float:left;" class="showMobile">
+														<td align="center">
+															<a href="https://www.grovo.com/aarp-skills/inventory?CMP=EMC-MIM-DIS-OTH-WORKJOBS-20161130_WorkJobs_DigitalSkills_Inventory_155300_112303-20161130-Hero-Start_Now-Button" alias="Start Now CTA Button" target="_blank" style="text-decoration: none;">
+																<img src="https://image.email.aarp.org/lib/fe9615707362037974/m/5/aarp_tek_20161130_1b_bg02_m.jpg" width="1" height="1" alt="Take the AARP Work &amp; Jobs Digital Skills Inventory" border="0" style="display: block;" class="fit" />
+															</a>
+														</td>
+													</tr>													
+												</table>
+												<!--MOBILE - end /////////////////////////////////////////////////////////// -->
+												<!--<![endif]-->
+
+												<!-- Text Wrapper -->
+												<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="hide">
+													<tr valign="top">
+														<td width="20" class="hide">&nbsp;</td>
+														<td width="278" align="center" class="padding15">
+
+															<!-- Gap -->
+															<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+																<tr valign="top">
+																	<td height="100" class="hide">&nbsp;</td>
+																</tr>
+															</table>
+
+															<!-- TEXT -->
+															<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+																<tr valign="top">
+																	<td align="left" style="font: normal 22px/24px Arial, Helvetica, sans-serif; color: #000000;">
+																		Searching for a job?
+																	</td>
+																</tr>																
+																<tr valign="top">
+																	<td align="left" style="font: bold 30px/32px Arial, Helvetica, sans-serif; color: #000000;">
+																		It's time to<br /> (<span style="color:#FA6422;">re</span>)examine<br />your digital skills.
+																	</td>
+																</tr>
+																<tr valign="top">
+																	<td height="20">&nbsp;</td>
+																</tr>
+																<tr valign="top">
+																	<td align="left">
+
+																		<!-- CTA -->
+																		<table width="260" border="0" cellspacing="0" cellpadding="0" class="cta">
+																			<tr align="center" valign="middle">
+																				<td height="50" align="center" valign="middle" bgcolor="#FA6422" style="font: normal 15px/20px Arial, Helvetica, Sans-Serif; padding: 0px 10px;">
+																					<a href="https://www.grovo.com/aarp-skills/inventory?CMP=EMC-MIM-DIS-OTH-WORKJOBS-20161130_WorkJobs_DigitalSkills_Inventory_155300_112303-20161130-Hero-Start_Now-Button" alias="Start Now CTA Button" target="_blank" style="text-decoration: none; display: block;">
+																						<strong style="color: #FFFFFF;">START NOW</strong>
+																					</a>
+																				</td>
+																			</tr>
+																		</table>
+
+																	</td>
+																</tr>
+															</table>
+
+														</td>
+													</tr>
+												</table>
+
+											</div>
+											<!--[if gte mso 9]>
+											</v:textbox>
+											</v:rect>
+											<![endif]-->
+											</td>
+											<td bgcolor="#e0e6e9" width="298" valign="top" align="center" style="font:normal 14px/18px Arial, Helvetica, sans-serif;" class="hide">
+												<a href="https://www.grovo.com/aarp-skills/inventory?CMP=EMC-MIM-DIS-OTH-WORKJOBS-20161130_WorkJobs_DigitalSkills_Inventory_155300_112303-20161130-Hero-Reexamine_Digital_Skills-Image" alias="Hero Image" style="outline:none;text-decoration:none;color:#000000;display:block;line-height:0px;" target="_blank">
+													<img src="https://image.email.aarp.org/lib/fe9615707362037974/m/5/aarp_tek_20161130_1b_bg_02.jpg" width="300" height="315" alt="Take the AARP Work &amp; Jobs Digital Skills Inventory" border="0" style="display:block;" />
+												</a>
+											</td>
+										</tr>
+									</table>
+
+									<!-- Primary Block -->
+									<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+										<tr valign="top">
+											<td colspan="3" height="20" class="hide">&nbsp;</td>
+										</tr>
+										<tr valign="top">
+											<td width="20" class="hide">&nbsp;</td>
+											<td width="560" class="padding15">
+
+												<!-- Text -->
+												<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+													<tr valign="top">
+														<td align="left" style="font: bold 18px/20px Arial, Helvetica, sans-serif; color: #000000;">
+															<span class="appleLinksBlack">In 20 minutes, you'll learn what digital skills you need to improve to compete in today's workplace.</span>
+														</td>
+													</tr>
+													<tr valign="top">
+														<td height="20">&nbsp;</td>
+													</tr>
+													<tr valign="top">
+														<td align="left" style="font: normal 16px/20px Arial, Helvetica, sans-serif; color: #000000;">
+															Hi, %%=ProperCase(@salut_name)=%%.
+														</td>
+													</tr>
+													<tr valign="top">
+														<td height="20">&nbsp;</td>
+													</tr>
+													<tr valign="top">
+														<td align="left" style="font: normal 16px/20px Arial, Helvetica, sans-serif; color: #000000;">
+															Workers 50+ are reinventing their careers. That's why we created the AARP Work &amp; Jobs Digital Skills Inventory. This free online tool will help you identify the digital skills you need to find a new job or excel in the one you already have. 
+														</td>
+													</tr>
+													<tr valign="top">
+														<td height="20" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+													</tr>
+													<tr valign="top">
+														<td align="left" style="font: normal 16px/20px Arial, Helvetica, sans-serif; color: #000000;">
+															<a href="https://www.grovo.com/aarp-skills/inventory?CMP=EMC-MIM-DIS-OTH-WORKJOBS-20161130_WorkJobs_DigitalSkills_Inventory_155300_112303-20161130-Body-Try_It_Now-Text" alias="Try it now text link" target="_blank" style="outline:none;text-decoration:none;">
+																<span style="color:#FA6422;text-decoration:underline;"><strong>Try it now.</strong></span>
+															</a> You might discover that you know more than you think. Whether you're fine-tuning your Microsoft Office skills or learning about new technology to stay current, our easy-to-use videos will help you find out what you need to know. Boosting your digital skills today can help you feel more confident at work tomorrow.
+														</td>
+													</tr>
+													<tr valign="top">
+														<td height="20" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+													</tr>
+													<tr valign="top">
+														<td align="left" style="font: bold 16px/20px Arial, Helvetica, sans-serif; color: #000000;">
+															Discover more ways to become a better candidate.
+														</td>
+													</tr>
+													<tr valign="top">
+														<td height="20" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+													</tr>
+													<tr valign="top">
+														<td align="left" style="font: normal 16px/20px Arial, Helvetica, sans-serif; color: #000000;">
+															The <a href="http://www.aarp.org/work/?CMP=EMC-MIM-DIS-OTH-WORKJOBS-20161130_WorkJobs_DigitalSkills_Inventory_155300_112303-20161130-Body-AARP_WorkJobs-Text" alias="AARP Work and Jobs text link" target="_blank" style="outline:none;text-decoration:none;">
+																<span style="color:#FA6422;text-decoration:underline;"><strong>AARP Work &amp; Jobs</strong></span>
+															</a>
+															 website offers a lot of ways to help you stay up to date in the workplace. You'll find resources to help you with a range of job skills, including creating r&eacute;sum&eacute;s, interviewing, utilizing social media, and even using Microsoft and Google products.
+														</td>
+													</tr>
+													<tr valign="top">
+														<td height="20" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+													</tr>	
+													<tr valign="top">
+														<td align="left" style="font: normal 16px/20px Arial, Helvetica, sans-serif; color: #000000;">
+															Check out these resources today to help you reinvent your job or your career.
+														</td>
+													</tr>
+													<tr valign="top">
+														<td height="5" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+													</tr>																																																					
+												</table>
+
+											</td>
+											<td width="20" class="hide">&nbsp;</td>
+										</tr>
+										<tr valign="top">
+											<td colspan="3" height="30" class="hide">&nbsp;</td>
+										</tr>
+									</table>
+									<!-- /Primary Block -->
+
+									<!-- GAP -->
+									<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+										<tr valign="top">
+											<td height="10" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+										</tr>
+									</table>
+
+									<!-- Social -->
+									<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+										<tr valign="top">
+											<td align="center">
+
+												<table border="0" cellspacing="0" cellpadding="0" align="center" class="social">
+													<tr valign="top">
+														<td align="center" width="30" height="30" style="font:normal 9px/15px Arial, Helvetica, sans-serif;">
+															<a href="https://www.facebook.com/AARP/" alias="Facebook Icon" target="_blank">
+																<img src="https://image.email.aarp.org/lib/fe8f15707362037e7c/m/1/20160919_facebook.gif" width="40" height="40" border="0" alt="Facebook" style="display:block;" />
+															</a>
+														</td>
+														<td width="10" class="hide">&nbsp;</td>
+														<td align="center" width="30" height="30" style="font:normal 9px/15px Arial, Helvetica, sans-serif;">
+															<a href="https://www.youtube.com/aarp" alias="YouTube Icon" target="_blank">
+																<img src="https://image.email.aarp.org/lib/fe8f15707362037e7c/m/1/20160919_youtube.gif" width="40" height="40" border="0" alt="YouTube" style="display:block;" />
+															</a>
+														</td>
+														<td width="10" class="hide">&nbsp;</td>
+														<td align="center" width="30" height="30" style="font:normal 9px/15px Arial, Helvetica, sans-serif;">
+															<a href="https://twitter.com/aarp" alias="Twitter Icon" target="_blank">
+																<img src="https://image.email.aarp.org/lib/fe8f15707362037e7c/m/1/20160919_twitter.gif" width="40" height="40" border="0" alt="Twitter" style="display:block;" />                                
+															</a>
+														</td>
+													</tr>
+												</table>
+
+											</td>
+										</tr>
+									</table>
+									<!-- /Social -->
+								</td>
+							</tr>
+
+            <tr>
+            <td height="1" bgcolor="#ffffff" class="gap" style="padding-bottom:45px;"><!-- spacer --></td>
+          	</tr>
+            
+            <tr>
+            <td bgcolor="#000000" align="right" valign="top" class="content_modules_wrapper">
+            
+            	<!-- Begin: H1. -->
+                
+                <table id="H1" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td align="right" valign="middle">
+                    
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                        <td align="right">
+                            	<table id="header_headline" width="258" align="right" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                <td width="270" height="70" align="right" valign="middle" style="font-family:Arial, Helvetica, sans-serif; color:#000000; padding-right: 19px;" class="header_topic_wrapper"></td>
+                                </tr>
+                                </table>
+                        </td>
+                        <td>
+                        	<table id="header_logo_arprp" align="right" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="left" valign="top" class="aarprp_logo_wrapper" style="font-family:Arial, Helvetica, sans-serif; color:#ffffff;padding: 25px 0 25px 0;">
+                                <span class="aarprp_logo_link"><a href="http://www.aarp.org/?CMP=EMC-MIM-DIS-OTH-WORKJOBS-20161130_WorkJobs_DigitalSkills_Inventory_155300_112303-20161130-Footer-AARP_Logo_Bottom-Logo" alias="AARP Logo 2" target="_blank"><img src="https://image.email.aarp.org/lib/fe9615707362037974/m/4/20160922_AARP-global-logo-B-W-v2.jpg" width="170" height="27" border="0" alt="AARP Real Possibilities" style="display:block;" /><span class="aarprp_logo_m-black"></span></a></span>
+                                </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td align="right">
+                            	<table id="header_headline" width="10" align="right" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                <td width="10" height="70" align="right" valign="middle" style="font-family:Arial, Helvetica, sans-serif; color:#000000; padding-right: 5px;" class="header_topic_wrapper"></td>
+                                </tr>
+                                </table>
+                        </td>
+                        </tr>
+                        </table>
+                    
+                    </td>
+                  </tr>
+                  </table>
+
+                <!-- End: H1. -->
+            
+            </td>
+            </tr>									
+
+                  <tr>
+                    <td align="center">
+									<!-- GAP -->
+									<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+										<tr valign="top">
+											<td height="10" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+										</tr>
+									</table>
+
+									<!--LEGAL-->
+									<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" class="tableAuto">
+										<tr valign="top">
+											<td bgcolor="#FFFFFF" align="center" style="padding:15px 10px;">
+												%%=ContentArea("39513")=%%
+											</td>
+										</tr>
+									</table>
+
+								</td>
+							</tr>
+						</table>
+
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+<!-- GMAIL APP FIX -->
+<div style="white-space: nowrap; font: 15px courier; color: #F9F8F8; background-color: #F9F8F8;" class="hide">
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</div>
+<custom name="opencounter" type="tracking">
+</body>
+</html>
